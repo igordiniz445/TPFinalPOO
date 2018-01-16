@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 
 public class Mensagens {
-    public static int tipoAeronave(){
+    public static int tipoAeronave(String alugadevolve){
         Scanner cin = new Scanner(System.in);
-        System.out.println("Qual aeronave deseja alugar ?");
+        System.out.println("Qual aeronave deseja "+alugadevolve+" ?");
         System.out.println("1 - Avião     ||     2 - Balão     ||     3 - Helicóptero");
         int opcao = cin.nextInt();
         while(opcao > 3){
@@ -47,14 +47,6 @@ public class Mensagens {
         return nome;
     }
 
-    public static int recebeIdadeCliente() {
-        Scanner cin = new Scanner(System.in);
-        int idade;
-        System.out.print("Idade do cliente: ");
-        idade = cin.nextInt();
-        return idade;
-    }
-
     public static String recebeCPFCliente() {
         Scanner cin = new Scanner(System.in);
         String cpf;
@@ -70,4 +62,14 @@ public class Mensagens {
         telefone = cin.next();
         return telefone;
     }
+    
+    public static int recebeIndice(){
+        Scanner cin = new Scanner(System.in);
+        System.out.print("Indice: ");
+        int indice;
+        indice = cin.nextInt();
+        return indice;
+    }
+
+    
 }

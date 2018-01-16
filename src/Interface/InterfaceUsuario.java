@@ -24,9 +24,9 @@ public class InterfaceUsuario {
         }if(opcao == 2){
             CadastrarAeronave.selecionaAeronave(controleAeronaves);
         }else if(opcao ==3){
-            controleAeronaves.verAeronavesDisponiveis();
+            controleAeronaves.verAeronavesDisponiveis(controleCliente);
         }else if(opcao == 4){
-            
+            controleAeronaves.devolverAeronave(controleCliente);
         }
         }while(opcao!=0);
     }

@@ -11,14 +11,34 @@ public class ControleDeCliente {
     public ControleDeCliente() {
         this.listaClientes = new ArrayList<>();
     }
+
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
     
     public void criaCliente(){
         //public Cliente(String nome, int idade, String cpf, String telefone)
         String nome = Mensagens.recebeNomeCliente();
-        int idade = Mensagens.recebeIdadeCliente();
         String cpf = Mensagens.recebeCPFCliente();
         String telefone = Mensagens.recebeTelefoneCliente();
-        Cliente cliente = new Cliente(nome, idade, cpf, telefone);
+        Cliente cliente = new Cliente(nome, cpf, telefone);
         listaClientes.add(cliente);
+    }
+    
+    public Cliente selecionaCliente(){
+        System.out.println("Qual cliente está alugando esta aeronave ?");
+        for(int i=0;i<listaClientes.size();i++){
+            System.out.println(i+"  - "+listaClientes.get(i));
+        }
+        if(listaClientes.isEmpty()){
+            System.out.println("Não há clientes cadastrados, cadastre um cliente antes");
+            return null;
+        }
+        int indice = Mensagens.recebeIndice();
+        while(indice>listaClientes.size()){
+            System.out.println("Indice não confere, selecione novamente.");
+            indice = Mensagens.recebeIndice();
+        }
+        return listaClientes.get(indice);
     }
 }
