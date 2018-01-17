@@ -6,14 +6,15 @@
 package Aeronaves;
 
 public class Balao extends Aeronave implements PrecoAluguel {
-    private int numPassageiros;
-    private String cor;
+    private final int numPassageiros;
+    private final String cor;
 
     public Balao(int passageiros, String cor, double valor, double taxa) {
         super(valor, taxa);
         this.numPassageiros = passageiros;
         this.cor = cor;
     }
+    
     @Override
     public double valorDoAluguel(int dias) {
         double valorDoAluguel;

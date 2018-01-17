@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Aeronaves;
-
 /**
  *
  * @author igorc
+ * 
  */
 public class Aviao extends Aeronave implements PrecoAluguel{
     
@@ -20,6 +15,9 @@ public class Aviao extends Aeronave implements PrecoAluguel{
         this.cor = cor;
     }
     
+    //Cada tipo de aeronave tem uma taxa especifica
+    //A regra para o avião é que de a cada 5 dias que o avião for ficar alugado
+    //a taxa aumenta em 1.45
     @Override
     public double valorDoAluguel(int dias) {
         double valorDoAluguel;
@@ -35,9 +33,9 @@ public class Aviao extends Aeronave implements PrecoAluguel{
             }
             valorDoAluguel = (dias*taxa)+super.getValor();
         }
-        
         return valorDoAluguel;
     }
+    
     @Override
     public String toString() {
       return "Modelo: "+this.modelo+"   Cor: "+this.cor+"   "+super.toString();

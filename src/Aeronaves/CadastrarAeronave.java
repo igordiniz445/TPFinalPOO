@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public final class CadastrarAeronave {
     
+    //Classe menu referente ao cadastro de aeronaves
     public static final void selecionaAeronave(Controle controle){
         int opcao;
         Scanner cin = new Scanner(System.in);

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControleDeCliente {
-     private List<Cliente> listaClientes;
+     private final List<Cliente> listaClientes;
 
     public ControleDeCliente() {
         this.listaClientes = new ArrayList<>();
@@ -24,7 +24,10 @@ public class ControleDeCliente {
         Cliente cliente = new Cliente(nome, cpf, telefone);
         listaClientes.add(cliente);
     }
-    
+    /*
+    Metodo para selecionar um cliente exibindo todos os clientes cadastrados
+    o método retorna o cliente selecionado
+    */
     public Cliente selecionaCliente(){
         System.out.println("Qual cliente está alugando esta aeronave ?");
         for(int i=0;i<listaClientes.size();i++){

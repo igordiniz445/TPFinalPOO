@@ -23,11 +23,11 @@ public class InterfaceUsuario {
             controleCliente.criaCliente();
         }if(opcao == 2){
             CadastrarAeronave.selecionaAeronave(controleAeronaves);
-        }else if(opcao ==3){
+        }if(opcao ==3){
             controleAeronaves.verAeronavesDisponiveis(controleCliente);
-        }else if(opcao == 4){
+        }if(opcao == 4){
             controleAeronaves.devolverAeronave(controleCliente);
-        }
+        }else{System.out.println("Digite um numero válido.");}
         }while(opcao!=0);
     }
 

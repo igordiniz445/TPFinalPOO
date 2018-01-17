@@ -57,7 +57,12 @@ public class Cliente {
     public String toString(){
         return "Nome: "+this.nome+", cpf: "+this.cpf+" telefone: "+this.telefone;
     }
-    
+    /*
+    Os metodos abaixo recebem como parametro o objeto de controle de todas as aeronaves.
+    devolve a aeronave alugada para o array de aeronaves disponveis
+    e tira do array de aeronaves alugadas, e do array de aeronaves alugadas
+    pelo atual cliente.
+    */
     public void devolveAviao( Controle controle){
         for(int i=0;i<this.listaAviao.size();i++){
             System.out.println("opcao "+i+" - "+this.listaAviao.get(i));

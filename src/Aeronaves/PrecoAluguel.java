@@ -8,6 +8,9 @@ package Aeronaves;
 /**
  *
  * @author igorc
+ * Esta interface serve para garantir que cada aeronave tenha
+ * uma regra especifica para calcular o valor que ficará o aluguel
+ * referente a quantidade de dias que o usuario queira alugar a aeronave
  */
 public interface PrecoAluguel {
     public double valorDoAluguel(int dias);
