@@ -8,11 +8,12 @@ public class Aviao extends Aeronave implements PrecoAluguel{
     
     private final String modelo;
     private final String cor;
-
-    public Aviao(String modelo, String cor, double valor, double taxa){
+    private final Motor motor;
+    public Aviao(String modelo, String cor, double valor, double taxa, Motor motor){
         super(valor, taxa);
         this.modelo = modelo;
         this.cor = cor;
+        this.motor = motor;
     }
     
     //Cada tipo de aeronave tem uma taxa especifica

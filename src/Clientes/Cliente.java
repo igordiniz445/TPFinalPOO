@@ -1,6 +1,7 @@
 
 package Clientes;
 
+import Aeronaves.Aeronave;
 import Aeronaves.Aviao;
 import Aeronaves.Balao;
 import Aeronaves.Controle;
@@ -14,19 +15,13 @@ public class Cliente {
     private final String cpf;
     private final String telefone;
     //Listas das possiveis aeronaves que eo cliente irá alugar
-    private final List<Aviao> listaAviao;
-    private final List<Balao> listaBalao;
-    private final List<Helicoptero> listaHelicoptero;
-
-    
+    private final List<Aeronave> listaAeronaves;
 
     public Cliente(String nome, String cpf, String telefone) {
         this.nome = nome;
         this.cpf = cpf;
         this.telefone = telefone;
-        this.listaHelicoptero = new ArrayList<>();
-        this.listaBalao = new ArrayList<>();
-        this.listaAviao = new ArrayList<>();
+        listaAeronaves = new ArrayList<>();
     }
 
     public String getNome() {
@@ -38,20 +33,14 @@ public class Cliente {
     public String getTelefone() {
         return telefone;
     }
-    
-    public List<Aviao> getListaAviao() {
-        return listaAviao;
-    }
-    public List<Balao> getListaBalao() {
-        return listaBalao;
-    }
-    public List<Helicoptero> getListaHelicoptero() {
-        return listaHelicoptero;
+
+    public List<Aeronave> getListaAeronaves() {
+        return listaAeronaves;
     }
     
-    public void alugaAviao(Aviao aviao){listaAviao.add(aviao);}
-    public void alugaBalao(Balao balao){listaBalao.add(balao);}
-    public void alugaHelicoptero(Helicoptero h){listaHelicoptero.add(h);}
+    public void alugaAviao(Aeronave aviao){listaAeronaves.add(aviao);}
+    public void alugaBalao(Aeronave balao){listaAeronaves.add(balao);}
+    public void alugaHelicoptero(Aeronave h){listaAeronaves.add(h);}
     
     @Override
     public String toString(){
@@ -64,33 +53,39 @@ public class Cliente {
     pelo atual cliente.
     */
     public void devolveAviao( Controle controle){
-        for(int i=0;i<this.listaAviao.size();i++){
-            System.out.println("opcao "+i+" - "+this.listaAviao.get(i));
+        for(int i=0;i<this.listaAeronaves.size();i++){
+            if(listaAeronaves instanceof Aviao)
+            System.out.println("opcao "+i+" - "+this.listaAeronaves.get(i));
         }
         int indice = Mensagens.recebeIndice();
-        controle.getListaAviao().add(this.listaAviao.get(indice));
-        controle.getAvioesAlugados().remove(this.listaAviao.get(indice));
-        listaAviao.remove(this.listaAviao.get(indice));
+        controle.getAeronavesDisponiveis().add( (Aviao) this.listaAeronaves.get(indice));
+        controle.getAeronavesAlugadas().remove(this.listaAeronaves.get(indice));
+        listaAeronaves.remove(this.listaAeronaves.get(indice));
         System.out.println("Aviao devolvido com sucesso!");
     }
     public void devolveBalao(Controle controle){
-        for(int i=0;i<this.listaBalao.size();i++){
-            System.out.println("opcao "+i+" - "+this.listaBalao.get(i));
+        
+        for(int i=0;i<this.listaAeronaves.size();i++){
+            if(this.listaAeronaves instanceof Balao){
+                System.out.println("indice: "+i+" - "+this.listaAeronaves.get(i));
+            }
         }
         int indice = Mensagens.recebeIndice();
-        controle.getListaBalao().add(this.listaBalao.get(indice));
-        controle.getBaloesAlugados().remove(this.listaBalao.get(indice));
-        listaBalao.remove(this.listaBalao.get(indice));
+        controle.getAeronavesDisponiveis().add(this.listaAeronaves.get(indice));
+        controle.getAeronavesAlugadas().remove(this.listaAeronaves.get(indice));
+        listaAeronaves.remove(this.listaAeronaves.get(indice));
         System.out.println("Balao devolvido com sucesso !");
     }
     public void devolveHelicoptero(Controle controle){
-        for(int i=0;i<this.listaHelicoptero.size();i++){
-            System.out.println("opcao "+i+" - "+this.listaHelicoptero.get(i));
+       for(int i=0;i<this.listaAeronaves.size();i++){
+            if(this.listaAeronaves instanceof Helicoptero){
+                System.out.println("indice: "+i+" - "+this.listaAeronaves.get(i));
+            }
         }
         int indice = Mensagens.recebeIndice();
-        controle.getListaHelicoptero().add(this.listaHelicoptero.get(indice));
-        controle.getHelicopterosAlugados().remove(this.listaHelicoptero.get(indice));
-        listaHelicoptero.remove(this.listaHelicoptero.get(indice));
+        controle.getAeronavesDisponiveis().add(this.listaAeronaves.get(indice));
+        controle.getAeronavesAlugadas().remove(this.listaAeronaves.get(indice));
+        listaAeronaves.remove(this.listaAeronaves.get(indice));
         System.out.println("Helicoptero devolvido com sucesso !");
     }
     

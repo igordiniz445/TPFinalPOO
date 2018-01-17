@@ -16,13 +16,13 @@ public final class CadastrarAeronave {
         opcao = cin.nextInt();
         if(opcao == 1){
             Aviao aviao = cadastraAviao();
-            controle.cadastrarAviao(aviao);
+            controle.cadastrarAeronave(aviao);
         }if(opcao == 2){
             Balao balao = cadastrarBalao();
-            controle.cadastrarBalao(balao);
+            controle.cadastrarAeronave(balao);
         }if(opcao == 3){
             Helicoptero helicoptero = cadastrarHelicoptero();
-            controle.cadastrarHelicoptero(helicoptero);
+            controle.cadastrarAeronave(helicoptero);
         }
     }
     
@@ -32,15 +32,18 @@ public final class CadastrarAeronave {
         String cor;
         double valor;
         double taxa;
-        System.out.print("Informe o modelo: ");
+        System.out.print("Informe o modelo(string): ");
         modelo = cin.next().trim();
-        System.out.print("Informe a cor: ");
+        System.out.print("Informe a cor(string): ");
         cor = cin.next().trim();
-        System.out.print("Informe o valor da locação: ");
+        System.out.print("Informe o valor da locação(double): ");
         valor = cin.nextDouble();
-        System.out.print("Informe o valor da Taxa de locação: ");
+        System.out.print("Informe o valor da Taxa de locação(double): ");
         taxa = cin.nextDouble();
-        Aviao aviao = new Aviao(modelo, cor, valor, taxa);
+        System.out.println("Dados do motor:");
+        //Composição!
+        Motor motor = recebeDadosDoMotor();
+        Aviao aviao = new Aviao(modelo, cor, valor, taxa, motor);
         System.out.println("Avião Cadastrado !");
         return aviao;
     }
@@ -51,13 +54,13 @@ public final class CadastrarAeronave {
         String cor;
         double valor;
         double taxa;
-        System.out.print("Informe o numero de passageiros: ");
+        System.out.print("Informe o numero de passageiros(int): ");
         passageiros = cin.nextInt();
-        System.out.print("Informe a cor: ");
+        System.out.print("Informe a cor(string): ");
         cor = cin.next().trim();
-        System.out.print("Informe o valor da locação: ");
+        System.out.print("Informe o valor da locação(double): ");
         valor = cin.nextDouble();
-        System.out.print("Informe o valor da Taxa de locação: ");
+        System.out.print("Informe o valor da Taxa de locação(double): ");
         taxa = cin.nextDouble();
         Balao balao = new Balao(passageiros, cor, valor, taxa);
         return balao;
@@ -68,14 +71,27 @@ public final class CadastrarAeronave {
         String modelo;
         double taxa;
         double valor;
-        System.out.print("Informe o modelo: ");
+        System.out.print("Informe o modelo(string): ");
         modelo = cin.next().trim();
-        System.out.print("Informe o valor da locação: ");
+        System.out.print("Informe o valor da locação(double): ");
         valor = cin.nextDouble();
-        System.out.print("Informe o valor da Taxa de locação: ");
+        System.out.print("Informe o valor da Taxa de locação(double): ");
         taxa = cin.nextDouble();
         Helicoptero h = new Helicoptero(modelo, taxa, valor);
         return h;
+    }
+
+    private static Motor recebeDadosDoMotor() {
+        //public Motor(float consumo, float peso, int ano)
+        Scanner cin = new Scanner(System.in);
+        System.out.print("Informe o consumo do motor(float): ");
+        float consumo = cin.nextFloat();
+        System.out.print("Informe o peso do motor(float): ");
+        float peso = cin.nextFloat();
+        System.out.print("Informe o ano do motor(int): ");
+        int ano = cin.nextInt();
+        Motor motor = new Motor(consumo,peso,ano);
+        return motor;
     }
     
 }

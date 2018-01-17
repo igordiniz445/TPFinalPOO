@@ -13,50 +13,31 @@ Classe controle irá gerenciar todas as aeronaves disponiveis ou alugadas
 public class Controle {
 
 
-    private final List<Aviao> listaAviao;
-    private final List<Balao> listaBalao;
-    private final List<Helicoptero> listaHelicoptero;
+    private final List<Aeronave> aeronavesDisponiveis;
     
-    private final List<Aviao> avioesAlugados;
-    private final List<Balao> baloesAlugados;
-    private final List<Helicoptero> helicopterosAlugados;
+    private final List<Aeronave> aeronavesAlugadas;
     /*
     Contrutor da classe, quando a classe controle for instanciada, 
     então todas as listas se iniciam.
     */
     public Controle() {
-        this.helicopterosAlugados = new ArrayList<>();
-        this.baloesAlugados = new ArrayList<>();
-        this.avioesAlugados = new ArrayList<>();
-        this.listaHelicoptero = new ArrayList<>();
-        this.listaBalao = new ArrayList<>();
-        this.listaAviao = new ArrayList<>();
+        this.aeronavesDisponiveis = new ArrayList<>();
+        this.aeronavesAlugadas = new ArrayList<>();
     }
-    public List<Aviao> getListaAviao() {
-        return listaAviao;
+
+    public List<Aeronave> getAeronavesDisponiveis() {
+        return aeronavesDisponiveis;
     }
-    public List<Balao> getListaBalao() {
-        return listaBalao;
-    }
-    public List<Helicoptero> getListaHelicoptero() {
-        return listaHelicoptero;
+    public List<Aeronave> getAeronavesAlugadas() {
+        return aeronavesAlugadas;
     }
     
-    public List<Aviao> getAvioesAlugados() {
-        return avioesAlugados;
-    }
-    public List<Balao> getBaloesAlugados() {
-        return baloesAlugados;
-    }
-    public List<Helicoptero> getHelicopterosAlugados() {
-        return helicopterosAlugados;
-    }
     /*
     Metodos para cadastrar um tipo de aeronave especifico
     cada tipo de aeronave cadastrada será adicionada ao array do determinado
     tipo de aeronave
     */
-    public void cadastrarAviao(Aviao aviao){
+    /*public void cadastrarAviao(Aviao aviao){
         listaAviao.add(aviao);
     }
     public void cadastrarBalao(Balao balao){
@@ -64,6 +45,9 @@ public class Controle {
     }
     public void cadastrarHelicoptero(Helicoptero h){
         listaHelicoptero.add(h);
+    }*/
+    public void cadastrarAeronave(Aeronave aeronave){
+        aeronavesDisponiveis.add(aeronave);
     }
     /*
     Todos os metodos para alugar uma determinada aeronave receberão como parametro
@@ -72,37 +56,28 @@ public class Controle {
     e ao mesmo tempo, sai do array de aeronaves diponiveis para alugar e entra
     para o array de aeronaves alugadas.
     */
-    private void alugaAviao(Aviao aviao, Cliente cliente){
-        this.listaAviao.remove(aviao);
-        this.avioesAlugados.add(aviao);
-        cliente.alugaAviao(aviao);
+    private void alugaAeronave(Aeronave aeronave, Cliente cliente){
+        this.aeronavesDisponiveis.remove(aeronave);
+        this.aeronavesAlugadas.add(aeronave);
+        cliente.alugaAviao(aeronave);
     }
-    private void alugaBalao(Balao balao, Cliente cliente){
-        this.listaBalao.remove(balao);
-        this.baloesAlugados.add(balao);
-        cliente.alugaBalao(balao);
-    }
-    private void alugaHelicoptero(Helicoptero h, Cliente cliente){
-        this.listaHelicoptero.remove(h);
-        this.helicopterosAlugados.add(h);
-        cliente.alugaHelicoptero(h);
-    }
+  
     /*
     Todos os metodos de devolução de aeronaves recebem a aeronave como parametro
     e remove do array de aeronaves alugadas e passam para o arrey de aeronaves 
     disponiveis.
     */
     public void devolveAviao(Aviao aviao){
-        this.avioesAlugados.remove(aviao);
-        this.listaAviao.add(aviao);
+        this.aeronavesAlugadas.remove(aviao);
+        this.aeronavesDisponiveis.add(aviao);
     }
     public void devolveBalao(Balao balao){
-        this.baloesAlugados.remove(balao);
-        this.listaBalao.add(balao);
+        this.aeronavesAlugadas.remove(balao);
+        this.aeronavesDisponiveis.add(balao);
     }
     public void devolveHelicoptero(Helicoptero h){
-        this.helicopterosAlugados.remove(h);
-        this.listaHelicoptero.add(h);
+        this.aeronavesAlugadas.remove(h);
+        this.aeronavesDisponiveis.add(h);
     }
     /*
     O método verAeronavesDisponiveis pergunta ao usuario que tipo de aeronave ele quer alugar
@@ -126,29 +101,31 @@ public class Controle {
         opcao2 = Mensagens.tipoAeronave("alugar");
         //Exibe todos os avioes disponiveis
         if(opcao2 == 1){
-            if(listaAviao.isEmpty()){
-                System.out.println("\nNão há aviões cadastrados, ou estão todos alugados !\n");
-                return;
-            }for(int i =0;i<listaAviao.size();i++){
-            System.out.println(i+" - "+listaAviao.get(i));
+            //usuario quer aviao
+           for(int i =0;i<aeronavesDisponiveis.size();i++){
+                Aeronave aeronave = aeronavesDisponiveis.get(i);
+                if(aeronave instanceof Aviao){
+                    System.out.println("indice:"+i+" - "+aeronave);
+                }
             }
         }
+        
         //exibe todos os baloes disponiveis
         if(opcao2 == 2){
-            if(listaBalao.isEmpty()){
-                System.out.println("\nNão há balões cadastrados, ou estão todos alugados! \n");
-                return;
-            }for(int i =0;i<listaBalao.size();i++){
-            System.out.println(i+" - "+listaBalao.get(i));
+            for(int i =0;i<aeronavesDisponiveis.size();i++){
+                Aeronave aeronave = aeronavesDisponiveis.get(i);
+                if(aeronave instanceof Balao){
+                    System.out.println("indice:"+i+" - "+aeronave);
+                }
             }
         }
         //exibe todos os helicopteros disponiveis
         if(opcao2 == 3){
-            if(listaHelicoptero.isEmpty()){
-                System.out.println("\nNão há helicopteros cadastrados, ou estão todos alugados! \n");
-                return;
-            }for(int i =0;i<listaHelicoptero.size();i++){
-            System.out.println(i+" - "+listaHelicoptero.get(i));
+            for(int i =0;i<aeronavesDisponiveis.size();i++){
+                Aeronave aeronave = aeronavesDisponiveis.get(i);
+                if(aeronave instanceof Helicoptero){
+                    System.out.println("indice:"+i+" - "+aeronave);
+                }
             }
         }
         //Pergunta ao usuario qual dessas aeronaves o usuario quer alugar e retorna o indice selecionado
@@ -156,12 +133,16 @@ public class Controle {
         //Pergunta ao usuario quantos dias ele quer alugar a aeronave e recebe de retorno o numero de dias
         dias = Mensagens.recebeQtdDias();
         //Calcula o valor que ficará o aluguel
+        System.out.println(posicao);
         if(opcao2 == 1){
-            valorDoAluguel = listaAviao.get(posicao).valorDoAluguel(dias);
-        }if(opcao2 == 2){
-            valorDoAluguel = listaBalao.get(posicao).valorDoAluguel(dias);
+            PrecoAluguel valor = (PrecoAluguel)aeronavesDisponiveis.get(posicao);
+            valorDoAluguel = valor.valorDoAluguel(dias);
+        }else if(opcao2 == 2){
+            PrecoAluguel valor = (PrecoAluguel)aeronavesDisponiveis.get(posicao);
+            valorDoAluguel = valor.valorDoAluguel(dias);
         }else{
-            valorDoAluguel = listaHelicoptero.get(posicao).valorDoAluguel(dias);
+            PrecoAluguel valor = (PrecoAluguel)aeronavesDisponiveis.get(posicao);
+            valorDoAluguel = valor.valorDoAluguel(dias);
         }
         //Pergunta o usuario se ele quer confirmar o aluguel
         opcao = Mensagens.confirmacaoAluguel(dias, valorDoAluguel);
@@ -173,21 +154,21 @@ public class Controle {
             Cliente cliente = controleCliente.selecionaCliente();
             if(opcao2 == 1){
                 try {
-                alugaAviao(listaAviao.get(posicao),cliente);
+                alugaAeronave(aeronavesDisponiveis.get(posicao),cliente);
                 } catch (IndexOutOfBoundsException e) {
                 System.err.println("Este indice não exite");
                 }
                 System.out.println("Aviao foi alugado com sucesso!");
             }if(opcao2 == 2){
                 try {
-                alugaBalao(listaBalao.get(posicao),cliente);
+                alugaAeronave(aeronavesDisponiveis.get(posicao),cliente);
                 } catch (IndexOutOfBoundsException e) {
                 System.err.println("Este indice não exite");
                 }
                 System.out.println("Balao foi alugado com sucesso!");
             }if(opcao2 == 3){
                 try {
-                alugaHelicoptero(listaHelicoptero.get(posicao),cliente);
+                alugaAeronave(aeronavesDisponiveis.get(posicao),cliente);
                 } catch (IndexOutOfBoundsException e) {
                 System.err.println("Este indice não exite");
                 }
@@ -209,26 +190,41 @@ public class Controle {
             System.out.println("Não há clientes Cadastrados, logo não há aeronaves alugadas");
             return;
         }
-        
+        boolean aux = false;
         int indice = Mensagens.recebeIndice();
         int opcao = Mensagens.tipoAeronave("devolver");
         if(opcao == 1){
-            if(clientes.getListaClientes().get(indice).getListaAviao().isEmpty()){
+            for (Cliente listaCliente : clientes.getListaClientes()) {
+                if(clientes.getListaClientes() instanceof Aviao){
+                    aux = true;
+                }
+            }
+            if(aux == false){
                 System.out.println("Não existem avioes alugados com este cliente");
                 return;
-            }
+            }else
             clientes.getListaClientes().get(indice).devolveAviao( this);
         }if(opcao == 2){
-            if(clientes.getListaClientes().get(indice).getListaBalao().isEmpty()){
-                System.out.println("Não exitem baloes alugados com este cliente");
-                return;
+            for (Cliente listaCliente : clientes.getListaClientes()) {
+                if(clientes.getListaClientes() instanceof Balao){
+                    aux = true;
+                }
             }
+            if(aux == false){
+                System.out.println("Não existem Baloes alugados com este cliente");
+                return;
+            }else
             clientes.getListaClientes().get(indice).devolveBalao( this);
         }if(opcao == 3){
-            if(clientes.getListaClientes().get(indice).getListaHelicoptero().isEmpty()){
-                System.out.println("Não existem helicopteros alugados com este cliente");
-                return;
+            for (Cliente listaCliente : clientes.getListaClientes()) {
+                if(clientes.getListaClientes() instanceof Helicoptero){
+                    aux = true;
+                }
             }
+            if(aux == false){
+                System.out.println("Não existem Helicopteros alugados com este cliente");
+                return;
+            }else
             clientes.getListaClientes().get(indice).devolveHelicoptero(this);
         }
     }

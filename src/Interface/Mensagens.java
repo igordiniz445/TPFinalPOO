@@ -19,7 +19,7 @@ public class Mensagens {
     
     public static int selecaoPosicao(){
         Scanner cin = new Scanner(System.in);
-        System.out.print("Qual destes deseja alugar? ");
+        System.out.print("Qual destes deseja alugar:(digite o indice da aeronave desejada) ");
         int posicao = cin.nextInt();
         return posicao;
     }
