@@ -27,7 +27,7 @@ public class InterfaceUsuario {
             controleAeronaves.verAeronavesDisponiveis(controleCliente);
         }if(opcao == 4){
             controleAeronaves.devolverAeronave(controleCliente);
-        }else{System.out.println("Digite um numero válido.");}
+        }
         }while(opcao!=0);
     }
 

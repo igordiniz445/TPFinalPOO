@@ -22,7 +22,13 @@ public class ControleDeCliente {
         String cpf = Mensagens.recebeCPFCliente();
         String telefone = Mensagens.recebeTelefoneCliente();
         Cliente cliente = new Cliente(nome, cpf, telefone);
-        listaClientes.add(cliente);
+        try{
+            listaClientes.add(cliente);
+        }catch(Exception e){
+            System.out.println("Erro: "+e.toString());
+        }
+        System.out.println("O cliente "+nome+", foi cadastrado com sucesso!");
+        }
     }
     /*
     Metodo para selecionar um cliente exibindo todos os clientes cadastrados
