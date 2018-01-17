@@ -29,7 +29,7 @@ public class ControleDeCliente {
         }
         System.out.println("O cliente "+nome+", foi cadastrado com sucesso!");
         }
-    }
+    
     /*
     Metodo para selecionar um cliente exibindo todos os clientes cadastrados
     o método retorna o cliente selecionado
