@@ -159,14 +159,14 @@ public class Controle {
                 System.err.println("Este indice não exite");
                 }
                 System.out.println("Aviao foi alugado com sucesso!");
-            }if(opcao2 == 2){
+            }else if(opcao2 == 2){
                 try {
                 alugaAeronave(aeronavesDisponiveis.get(posicao),cliente);
                 } catch (IndexOutOfBoundsException e) {
                 System.err.println("Este indice não exite");
                 }
                 System.out.println("Balao foi alugado com sucesso!");
-            }if(opcao2 == 3){
+            }else if(opcao2 == 3){
                 try {
                 alugaAeronave(aeronavesDisponiveis.get(posicao),cliente);
                 } catch (IndexOutOfBoundsException e) {
@@ -201,10 +201,9 @@ public class Controle {
             }
             if(aux == false){
                 System.out.println("Não existem avioes alugados com este cliente");
-                return;
             }else
             clientes.getListaClientes().get(indice).devolveAviao( this);
-        }if(opcao == 2){
+        }else if(opcao == 2){
             for (Cliente listaCliente : clientes.getListaClientes()) {
                 if(clientes.getListaClientes() instanceof Balao){
                     aux = true;
@@ -212,10 +211,9 @@ public class Controle {
             }
             if(aux == false){
                 System.out.println("Não existem Baloes alugados com este cliente");
-                return;
             }else
             clientes.getListaClientes().get(indice).devolveBalao( this);
-        }if(opcao == 3){
+        }else if(opcao == 3){
             for (Cliente listaCliente : clientes.getListaClientes()) {
                 if(clientes.getListaClientes() instanceof Helicoptero){
                     aux = true;
@@ -223,7 +221,6 @@ public class Controle {
             }
             if(aux == false){
                 System.out.println("Não existem Helicopteros alugados com este cliente");
-                return;
             }else
             clientes.getListaClientes().get(indice).devolveHelicoptero(this);
         }
