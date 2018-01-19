@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="TPFinalPOO">
+  <ClassDiagramComponents>
+    <Class name="Aeronave" package="Aeronaves" visibility="public" xPosition="670.0" yPosition="11.0">
+      <Fields>
+        <Field name="valor" type="double" visibility="private" isFinal="true"/>
+        <Field name="taxa" type="double" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="double" name="valor"/>
+          <Argument type="double" name="taxa"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getValor" returnType="double" visibility="public"/>
+        <Method name="getTaxa" returnType="double" visibility="public"/>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Aviao" package="Aeronaves" visibility="public" xPosition="10.0" yPosition="167.0">
+      <Fields>
+        <Field name="modelo" type="String" visibility="private" isFinal="true"/>
+        <Field name="cor" type="String" visibility="private" isFinal="true"/>
+        <Field name="motor" type="Motor" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="modelo"/>
+          <Argument type="String" name="cor"/>
+          <Argument type="double" name="valor"/>
+          <Argument type="double" name="taxa"/>
+          <Argument type="Motor" name="motor"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="valorDoAluguel" returnType="double" visibility="public">
+          <Argument type="int" name="dias"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Balao" package="Aeronaves" visibility="public" xPosition="443.0" yPosition="272.0">
+      <Fields>
+        <Field name="numPassageiros" type="int" visibility="private" isFinal="true"/>
+        <Field name="cor" type="String" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="int" name="passageiros"/>
+          <Argument type="String" name="cor"/>
+          <Argument type="double" name="valor"/>
+          <Argument type="double" name="taxa"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="valorDoAluguel" returnType="double" visibility="public">
+          <Argument type="int" name="dias"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="CadastrarAeronave" package="Aeronaves" visibility="public" isFinal="true" xPosition="1375.0" yPosition="440.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="selecionaAeronave" returnType="void" visibility="public" isStatic="true" isFinal="true">
+          <Argument type="Controle" name="controle"/>
+        </Method>
+        <Method name="cadastraAviao" returnType="Aviao" visibility="private" isStatic="true"/>
+        <Method name="cadastrarBalao" returnType="Balao" visibility="private" isStatic="true"/>
+        <Method name="cadastrarHelicoptero" returnType="Helicoptero" visibility="private" isStatic="true"/>
+        <Method name="recebeDadosDoMotor" returnType="Motor" visibility="private" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Class name="Controle" package="Aeronaves" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="aeronavesDisponiveis" type="List&lt;Aeronave&gt;" visibility="private" isFinal="true"/>
+        <Field name="aeronavesAlugadas" type="List&lt;Aeronave&gt;" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getAeronavesDisponiveis" returnType="List&lt;Aeronave&gt;" visibility="public"/>
+        <Method name="getAeronavesAlugadas" returnType="List&lt;Aeronave&gt;" visibility="public"/>
+        <Method name="cadastrarAeronave" returnType="void" visibility="public">
+          <Argument type="Aeronave" name="aeronave"/>
+        </Method>
+        <Method name="alugaAeronave" returnType="void" visibility="private">
+          <Argument type="Aeronave" name="aeronave"/>
+          <Argument type="Cliente" name="cliente"/>
+        </Method>
+        <Method name="devolveAviao" returnType="void" visibility="public">
+          <Argument type="Aviao" name="aviao"/>
+        </Method>
+        <Method name="devolveBalao" returnType="void" visibility="public">
+          <Argument type="Balao" name="balao"/>
+        </Method>
+        <Method name="devolveHelicoptero" returnType="void" visibility="public">
+          <Argument type="Helicoptero" name="h"/>
+        </Method>
+        <Method name="verAeronavesDisponiveis" returnType="void" visibility="public">
+          <Argument type="ControleDeCliente" name="controleCliente"/>
+        </Method>
+        <Method name="devolverAeronave" returnType="void" visibility="public">
+          <Argument type="ControleDeCliente" name="clientes"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Helicoptero" package="Aeronaves" visibility="public" xPosition="803.0" yPosition="257.0">
+      <Fields>
+        <Field name="modelo" type="String" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="modelo"/>
+          <Argument type="double" name="taxa"/>
+          <Argument type="double" name="valor"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="valorDoAluguel" returnType="double" visibility="public">
+          <Argument type="int" name="dias"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Main" package="Aeronaves" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="main" returnType="void" visibility="public" isStatic="true">
+          <Argument type="String[]" name="args"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Motor" package="Aeronaves" visibility="public" xPosition="128.0" yPosition="402.0">
+      <Fields>
+        <Field name="consumo" type="float" visibility="private" isFinal="true"/>
+        <Field name="peso" type="float" visibility="private" isFinal="true"/>
+        <Field name="ano" type="int" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="float" name="consumo"/>
+          <Argument type="float" name="peso"/>
+          <Argument type="int" name="ano"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getConsumo" returnType="float" visibility="public"/>
+        <Method name="getPeso" returnType="float" visibility="public"/>
+        <Method name="getAno" returnType="int" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cliente" package="Clientes" visibility="public" xPosition="566.0" yPosition="494.0">
+      <Fields>
+        <Field name="nome" type="String" visibility="private" isFinal="true"/>
+        <Field name="cpf" type="String" visibility="private" isFinal="true"/>
+        <Field name="telefone" type="String" visibility="private" isFinal="true"/>
+        <Field name="listaAeronaves" type="List&lt;Aeronave&gt;" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="nome"/>
+          <Argument type="String" name="cpf"/>
+          <Argument type="String" name="telefone"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getNome" returnType="String" visibility="public"/>
+        <Method name="getCpf" returnType="String" visibility="public"/>
+        <Method name="getTelefone" returnType="String" visibility="public"/>
+        <Method name="getListaAeronaves" returnType="List&lt;Aeronave&gt;" visibility="public"/>
+        <Method name="alugaAviao" returnType="void" visibility="public">
+          <Argument type="Aeronave" name="aviao"/>
+        </Method>
+        <Method name="alugaBalao" returnType="void" visibility="public">
+          <Argument type="Aeronave" name="balao"/>
+        </Method>
+        <Method name="alugaHelicoptero" returnType="void" visibility="public">
+          <Argument type="Aeronave" name="h"/>
+        </Method>
+        <Method name="toString" returnType="String" visibility="public"/>
+        <Method name="devolveAviao" returnType="void" visibility="public">
+          <Argument type="Controle" name="controle"/>
+        </Method>
+        <Method name="devolveBalao" returnType="void" visibility="public">
+          <Argument type="Controle" name="controle"/>
+        </Method>
+        <Method name="devolveHelicoptero" returnType="void" visibility="public">
+          <Argument type="Controle" name="controle"/>
+        </Method>
+        <Method name="alugaAeronave" returnType="void" visibility="public">
+          <Argument type="Aeronave" name="aeronave"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ControleDeCliente" package="Clientes" visibility="public" xPosition="991.0" yPosition="859.0">
+      <Fields>
+        <Field name="listaClientes" type="List&lt;Cliente&gt;" visibility="private" isFinal="true"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getListaClientes" returnType="List&lt;Cliente&gt;" visibility="public"/>
+        <Method name="criaCliente" returnType="void" visibility="public"/>
+        <Method name="selecionaCliente" returnType="Cliente" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="InterfaceUsuario" package="Interface" visibility="public" xPosition="949.0" yPosition="618.0">
+      <Fields>
+        <Field name="opcao" type="int" visibility="private"/>
+        <Field name="cin" type="Scanner" visibility="package"/>
+        <Field name="controleAeronaves" type="Controle" visibility="package"/>
+        <Field name="controleCliente" type="ControleDeCliente" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="onStart" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Mensagens" package="Interface" visibility="public" xPosition="1500.0" yPosition="707.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="tipoAeronave" returnType="int" visibility="public" isStatic="true">
+          <Argument type="String" name="alugadevolve"/>
+        </Method>
+        <Method name="selecaoPosicao" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="recebeQtdDias" returnType="int" visibility="public" isStatic="true"/>
+        <Method name="confirmacaoAluguel" returnType="int" visibility="public" isStatic="true">
+          <Argument type="int" name="dias"/>
+          <Argument type="double" name="valorDoAluguel"/>
+        </Method>
+        <Method name="recebeNomeCliente" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="recebeCPFCliente" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="recebeTelefoneCliente" returnType="String" visibility="public" isStatic="true"/>
+        <Method name="recebeIndice" returnType="int" visibility="public" isStatic="true"/>
+      </Methods>
+    </Class>
+    <Interface name="PrecoAluguel" package="Aeronaves" visibility="public" xPosition="128.0" yPosition="20.0">
+      <Methods>
+        <Method name="valorDoAluguel" returnType="double" visibility="public">
+          <Argument type="int" name="dias"/>
+        </Method>
+      </Methods>
+    </Interface>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="aeronavesDisponiveis" source="Aeronaves.Controle" target="Aeronaves.Aeronave" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Aeronave&gt;"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Aeronaves.Balao" target="Aeronaves.PrecoAluguel"/>
+    <UseRelation source="Aeronaves.CadastrarAeronave" target="Aeronaves.Motor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aeronaves.CadastrarAeronave" target="Aeronaves.Balao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aeronaves.Controle" target="Aeronaves.Helicoptero" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Clientes.ControleDeCliente" target="Clientes.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaAeronaves" source="Clientes.Cliente" target="Aeronaves.Aeronave" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Aeronave&gt;"/>
+    <IsRelation name="is" source="Aeronaves.Balao" target="Aeronaves.Aeronave"/>
+    <UseRelation source="Aeronaves.Controle" target="Aeronaves.Balao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="controleAeronaves" source="Interface.InterfaceUsuario" target="Aeronaves.Controle" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aeronaves.Controle" target="Aeronaves.Aeronave" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aeronaves.CadastrarAeronave" target="Aeronaves.Controle" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aeronaves.CadastrarAeronave" target="Aeronaves.Aviao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Aeronaves.Aviao" target="Aeronaves.PrecoAluguel"/>
+    <IsRelation name="is" source="Aeronaves.Aviao" target="Aeronaves.Aeronave"/>
+    <UseRelation source="Aeronaves.Controle" target="Clientes.ControleDeCliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="motor" source="Aeronaves.Aviao" target="Aeronaves.Motor" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aeronaves.Controle" target="Clientes.Cliente" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aeronaves.Controle" target="Aeronaves.Aviao" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="Aeronaves.Helicoptero" target="Aeronaves.Aeronave"/>
+    <ImplementsRelation name="&lt;&lt;implements&gt;&gt;" source="Aeronaves.Helicoptero" target="Aeronaves.PrecoAluguel"/>
+    <HasRelation name="aeronavesAlugadas" source="Aeronaves.Controle" target="Aeronaves.Aeronave" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Aeronave&gt;"/>
+    <HasRelation name="controleCliente" source="Interface.InterfaceUsuario" target="Clientes.ControleDeCliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Clientes.Cliente" target="Aeronaves.Controle" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="listaClientes" source="Clientes.ControleDeCliente" target="Clientes.Cliente" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="List&lt;Cliente&gt;"/>
+    <UseRelation source="Clientes.Cliente" target="Aeronaves.Aeronave" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="Aeronaves.CadastrarAeronave" target="Aeronaves.Helicoptero" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

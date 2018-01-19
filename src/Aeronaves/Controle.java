@@ -166,7 +166,7 @@ public class Controle {
                 System.err.println("Este indice não exite");
                 }
                 System.out.println("Balao foi alugado com sucesso!");
-            }else if(opcao2 == 3){
+            }else {
                 try {
                 alugaAeronave(aeronavesDisponiveis.get(posicao),cliente);
                 } catch (IndexOutOfBoundsException e) {
@@ -194,34 +194,10 @@ public class Controle {
         int indice = Mensagens.recebeIndice();
         int opcao = Mensagens.tipoAeronave("devolver");
         if(opcao == 1){
-            for (Cliente listaCliente : clientes.getListaClientes()) {
-                if(clientes.getListaClientes() instanceof Aviao){
-                    aux = true;
-                }
-            }
-            if(aux == false){
-                System.out.println("Não existem avioes alugados com este cliente");
-            }else
             clientes.getListaClientes().get(indice).devolveAviao( this);
         }else if(opcao == 2){
-            for (Cliente listaCliente : clientes.getListaClientes()) {
-                if(clientes.getListaClientes() instanceof Balao){
-                    aux = true;
-                }
-            }
-            if(aux == false){
-                System.out.println("Não existem Baloes alugados com este cliente");
-            }else
             clientes.getListaClientes().get(indice).devolveBalao( this);
         }else if(opcao == 3){
-            for (Cliente listaCliente : clientes.getListaClientes()) {
-                if(clientes.getListaClientes() instanceof Helicoptero){
-                    aux = true;
-                }
-            }
-            if(aux == false){
-                System.out.println("Não existem Helicopteros alugados com este cliente");
-            }else
             clientes.getListaClientes().get(indice).devolveHelicoptero(this);
         }
     }
