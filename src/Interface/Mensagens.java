@@ -18,14 +18,14 @@ public class Mensagens {
     
     public static int selecaoPosicao(){
         Scanner cin = new Scanner(System.in);
-        System.out.print("Qual destes deseja alugar:(digite o indice da aeronave desejada) ");
+        System.out.print("Qual destes deseja alugar(digite o indice da aeronave desejada): ");
         int posicao = cin.nextInt();
         return posicao;
     }
     
     public static int recebeQtdDias(){
         Scanner cin = new Scanner(System.in);
-        System.out.print("Quantos dias deseja alugar-lo ?");
+        System.out.print("Quantos dias deseja alugar-lo ?: ");
         int dias = cin.nextInt();
         return dias;
     }
@@ -33,7 +33,7 @@ public class Mensagens {
     public static int confirmacaoAluguel(int dias, double valorDoAluguel){
         Scanner cin = new Scanner(System.in);
         System.out.println("O Valor do aluguel para "+dias+" dias ficará em R$"+valorDoAluguel+" deseja continuar ?");
-        System.out.println("1 - Sim       ||        2 - Não");
+        System.out.print("1 - Sim       ||        2 - Não      Resposta(1 ou 2):");
         int opcao = cin.nextInt();
         return opcao;
     }

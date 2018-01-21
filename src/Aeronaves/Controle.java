@@ -94,6 +94,7 @@ public class Controle {
         int opcao, opcao2, posicao;
         int dias;
         double valorDoAluguel;
+        boolean existeAeronave = false;
         //Chama a função da interface para perguntar o tipo de aeronave
         //passando como paramento a string "alugar" para substituir na frase
         //exibida para o usuario, já que esta memsa função é chamada em outras situações
@@ -105,8 +106,12 @@ public class Controle {
            for(int i =0;i<aeronavesDisponiveis.size();i++){
                 Aeronave aeronave = aeronavesDisponiveis.get(i);
                 if(aeronave instanceof Aviao){
+                    existeAeronave = true;
                     System.out.println("indice:"+i+" - "+aeronave);
                 }
+            }if(existeAeronave == false){
+                System.out.println("Não existem Avioes cadastrados, ou estão todos alugados");
+                return;
             }
         }
         
@@ -115,8 +120,12 @@ public class Controle {
             for(int i =0;i<aeronavesDisponiveis.size();i++){
                 Aeronave aeronave = aeronavesDisponiveis.get(i);
                 if(aeronave instanceof Balao){
+                    existeAeronave = true;
                     System.out.println("indice:"+i+" - "+aeronave);
                 }
+            }if(existeAeronave == false){
+                System.out.println("Não existem Baloes cadastrados, ou estão todos alugados");
+                return;
             }
         }
         //exibe todos os helicopteros disponiveis
@@ -124,8 +133,12 @@ public class Controle {
             for(int i =0;i<aeronavesDisponiveis.size();i++){
                 Aeronave aeronave = aeronavesDisponiveis.get(i);
                 if(aeronave instanceof Helicoptero){
+                    existeAeronave = true;
                     System.out.println("indice:"+i+" - "+aeronave);
                 }
+            }if(existeAeronave == false){
+                System.out.println("Não existem Helicopteros cadastrados, ou estão todos alugados");
+                return;
             }
         }
         //Pergunta ao usuario qual dessas aeronaves o usuario quer alugar e retorna o indice selecionado
@@ -175,6 +188,7 @@ public class Controle {
                 System.out.println("Helicoptero foi alugado com sucesso!");
             }
         }else{
+            System.out.println("Operação cancelada.");
         }
     }
     /*
@@ -192,6 +206,11 @@ public class Controle {
         }
         boolean aux = false;
         int indice = Mensagens.recebeIndice();
+        while(indice>clientes.getListaClientes().size()-1){
+            System.out.println("indice inválido, Digite o numero antes do nome.");
+            indice = Mensagens.recebeIndice();
+        }
+        
         int opcao = Mensagens.tipoAeronave("devolver");
         if(opcao == 1){
             clientes.getListaClientes().get(indice).devolveAviao( this);
